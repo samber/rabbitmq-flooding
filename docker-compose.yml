@@ -14,6 +14,7 @@ services:
       - RABBITMQ_EXCHANGE=
       - RABBITMQ_ROUTING_KEY=
     command: producer.py
+    restart: unless-stopped
 
   consumer:
     image: samber/rabbitmq-flooding:latest
@@ -28,3 +29,4 @@ services:
       - RABBITMQ_EXCHANGE=
       - RABBITMQ_ROUTING_KEY=
     command: consumer.py
+    restart: unless-stopped
