@@ -10,7 +10,7 @@ credentials = pika.PlainCredentials(
 )
 connection = pika.BlockingConnection(pika.ConnectionParameters(
     os.environ["RABBITMQ_HOSTNAME"],
-    os.environ["RABBITMQ_PORT"],
+    int(os.environ["RABBITMQ_PORT"]),
     os.environ["RABBITMQ_VHOST"],
     credentials,
 ))
