@@ -11,7 +11,9 @@ Please set following environment variables:
 - RABBITMQ_ROUTING_KEY
 
 ```sh
-docker-compose up
+docker-compose up -d
+docker-compose scale producer=10 consumer=10
+docker-compose logs -f
 
 # or
 
