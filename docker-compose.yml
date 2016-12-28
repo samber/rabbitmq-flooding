@@ -6,6 +6,10 @@ services:
     build: .
     environment:
       - RABBITMQ_HOSTNAME=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USERNAME=guest
+      - RABBITMQ_PASSWORD=guest
+      - RABBITMQ_VHOST=/cluster-testing
       - RABBITMQ_QUEUE=hello
       - RABBITMQ_EXCHANGE=
       - RABBITMQ_ROUTING_KEY=
@@ -16,6 +20,10 @@ services:
     build: .
     environment:
       - RABBITMQ_HOSTNAME=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USERNAME=guest
+      - RABBITMQ_PASSWORD=guest
+      - RABBITMQ_VHOST=/cluster-testing
       - RABBITMQ_QUEUE=hello
       - RABBITMQ_EXCHANGE=
       - RABBITMQ_ROUTING_KEY=
