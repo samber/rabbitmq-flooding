@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  producer:
+    image: samber/rabbitmq-flooding:latest
+    build: .
+    environment:
+      - RABBITMQ_HOSTNAME=rabbitmq
+      - RABBITMQ_QUEUE=hello
+      - RABBITMQ_EXCHANGE=
+      - RABBITMQ_ROUTING_KEY=
+    command: producer.py
+
+  consumer:
+    image: samber/rabbitmq-flooding:latest
+    build: .
+    environment:
+      - RABBITMQ_HOSTNAME=rabbitmq
+      - RABBITMQ_QUEUE=hello
+      - RABBITMQ_EXCHANGE=
+      - RABBITMQ_ROUTING_KEY=
+    command: consumer.py
