@@ -16,7 +16,7 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(
 ))
 channel = connection.channel()
 
-channel.queue_declare(queue=os.environ["RABBITMQ_QUEUE"])
+channel.queue_declare(exchange=os.environ["RABBITMQ_EXCHANGE"], queue=os.environ["RABBITMQ_QUEUE"], routing_key=os.environ["RABBITMQ_ROUTING_KEY"])
 
 print("Producer starting. To exit press CTRL+C.")
 while 1:
