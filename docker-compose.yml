@@ -12,7 +12,7 @@ services:
       - RABBITMQ_VHOST=/cluster-testing
       - RABBITMQ_QUEUE=hello
       - RABBITMQ_EXCHANGE=
-      - RABBITMQ_ROUTING_KEY=
+      - RABBITMQ_ROUTING_KEY=hello
     command: producer.py
     restart: unless-stopped
 
@@ -27,6 +27,6 @@ services:
       - RABBITMQ_VHOST=/cluster-testing
       - RABBITMQ_QUEUE=hello
       - RABBITMQ_EXCHANGE=
-      - RABBITMQ_ROUTING_KEY=
+      - RABBITMQ_ROUTING_KEY=hello
     command: consumer.py
     restart: unless-stopped
