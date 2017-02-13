@@ -4,19 +4,12 @@ import os
 import random
 import time
 
-credentials = pika.PlainCredentials(
-    os.environ["RABBITMQ_USERNAME"],
-    os.environ["RABBITMQ_PASSWORD"]
-)
-connection = pika.BlockingConnection(pika.ConnectionParameters(
-    os.environ["RABBITMQ_HOSTNAME"],
-    int(os.environ["RABBITMQ_PORT"]),
-    os.environ["RABBITMQ_VHOST"],
-    credentials,
-))
+params = pika.URLParameters(os.environ["RABBITMQ_CONN"])
+connection = pika.BlockingConnection(params)
 channel = connection.channel()
 
-channel.queue_declare(exchange=os.environ["RABBITMQ_EXCHANGE"], queue=os.environ["RABBITMQ_QUEUE"], routing_key=os.environ["RABBITMQ_ROUTING_KEY"])
+channel.queue_declare(queue=os.environ["RABBITMQ_QUEUE"])
+
 
 def callback(ch, method, properties, body):
     print('*', end="")
